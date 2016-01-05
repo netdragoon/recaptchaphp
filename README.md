@@ -49,3 +49,4 @@ Run the Artisan comand
     php artisan vendor:publish --force --provider="Canducci\ReCaptcha\Providers\ReCaptchaServiceProvider"
 
 
+In the `config/recaptcha.php` add `site_key` e `secret_key` of _Google ReCaptcha_ (https://www.google.com/recaptcha/intro/index.html).
