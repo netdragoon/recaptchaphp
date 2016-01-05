@@ -17,7 +17,7 @@
 In the `require` key of `composer.json` file add the following
 
 ```PHP
-"canducci/recaptcha": "1.0.*" 
+"canducci/recaptcha": "dev-master" 
 
 ```
 
