@@ -10,5 +10,42 @@
 [![Packagist](https://img.shields.io/packagist/v/canducci/recaptcha.svg?label=version)](https://packagist.org/packages/canducci/recaptcha)
 [![](https://img.shields.io/twitter/url/https/packagist.org/packages/canducci/recaptcha.svg?style=social)]()
 
+## Quick start
+
+### Required setup
+
+In the `require` key of `composer.json` file add the following
+
+```PHP
+"canducci/recaptcha": "1.0.*" 
+
+```
+
+Run the Composer update comand
+
+    $ composer update
+    
+In your `config/app.php` add `providers` array
+
+```PHP
+'providers' => array(
+    ...,    
+    Canducci\ReCaptcha\Providers\ReCaptchaServiceProvider::class,
+),
+```   
+ 
+
+At the end of `config/app.php` add o `aliases` (Facade) in array
+
+```PHP
+'aliases' => array(
+    ...,    
+    'ReCaptcha' => Canducci\ReCaptcha\Facades\ReCaptcha::class,
+),
+``` 
+
+Run the Artisan comand
+
+    php artisan vendor:publish --force --provider="Canducci\ReCaptcha\Providers\ReCaptchaServiceProvider"
 
 
