@@ -107,3 +107,39 @@ and
 ```    
 
 ___
+
+###Verify `g-recaptcha-response` is valid?
+
+__Use namespace:__
+
+    use App\Http\Requests\ReCaptchaRequest;
+    use Canducci\ReCaptcha\ReCaptcha;
+    
+1) With `ReCaptchaRequest`, example:
+
+```PHP
+public function post(ReCaptchaRequest $request, ReCaptcha $re)
+{
+    
+}
+```
+
+2) In the method, example:
+
+```PHP
+public function v(Request $request, ReCaptcha $re)
+{    
+ 
+    $valid = $re->valid($request->get('g-recaptcha-response'));
+    
+    if ($valid)
+    {
+        //success
+    }
+    else
+    {
+        //not valid
+    }
+}
+
+```
