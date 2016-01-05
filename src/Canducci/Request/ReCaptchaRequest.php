@@ -19,7 +19,7 @@ class ReCaptchaRequest extends FormRequest
 
         return [
 
-            'g-recaptcha-response' => 'required'
+            'g-recaptcha-response' => 'required|recaptcharesponse'
 
         ];
 
@@ -30,7 +30,8 @@ class ReCaptchaRequest extends FormRequest
 
         return [
 
-            'g-recaptcha-response.required' => 'A g-recaptcha-response is required'
+            'g-recaptcha-response.required' => 'A g-recaptcha-response is required',
+            'g-recaptcha-response.recaptcharesponse' => 'A g-recaptcha-response not valid'
 
         ];
 

@@ -3,12 +3,14 @@
 namespace Canducci\ReCaptcha\Providers;
 
 use Canducci\ReCaptcha\ReCaptcha;
+use Canducci\ReCaptcha\ReCaptchaValid;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
 class ReCaptchaServiceProvider extends ServiceProvider
 {
 
+    protected $defer = false;
     /**
      * Boot
      *
@@ -20,6 +22,8 @@ class ReCaptchaServiceProvider extends ServiceProvider
             __DIR__ . '/../../Config/recaptcha.php' => config_path('recaptcha.php'),
             __DIR__.'/../../Request/ReCaptchaRequest.php' => app_path('/Http/Requests/ReCaptchaRequest.php')
         ]);
+
+        $this->validation();
     }
 
     /**
@@ -41,6 +45,12 @@ class ReCaptchaServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('Canducci\ReCaptcha\ReCaptcha', 'recaptcha');
+    }
+
+    private function validation()
+    {
+        $validator = $this->app->make('validator');
+        $validator->extend('recaptcharesponse', ReCaptchaValid::class, 'Error');
     }
 
     private function blade()

@@ -61,7 +61,7 @@ class ReCaptcha
 
     }
 
-    public function valid($input)
+    public function valid($response)
     {
         return true;
     }

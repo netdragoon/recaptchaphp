@@ -49,3 +49,15 @@ if (!function_exists('recaptchascript'))
     }
 
 }
+
+if (!function_exists('recaptchavalid'))
+{
+
+    function recaptchavalid($response)
+    {
+
+        return recaptcha()->valid($response);
+
+    }
+
+}
