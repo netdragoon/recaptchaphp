@@ -2,7 +2,7 @@
 
 namespace Canducci\ReCaptcha;
 
-class ReCaptchaValid
+class ReCaptchaValidation
 {
 
     private $recaptcha;
@@ -17,7 +17,6 @@ class ReCaptchaValid
         $this->recaptcha = $recaptcha;
 
     }
-
 
     /**
      * @param $attribute

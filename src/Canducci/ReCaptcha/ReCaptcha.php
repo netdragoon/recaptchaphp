@@ -4,6 +4,16 @@ namespace Canducci\ReCaptcha;
 
 class ReCaptcha
 {
+
+    /**
+     * @param string $dataTheme
+     * @param string $dataType
+     * @param string $dataSize
+     * @param int $tabIndex
+     * @param null $dataCallback
+     * @param null $dataExpiredCallback
+     * @return string
+     */
     public function render($dataTheme = ReCaptchaRenderTheme::Ligth,
                            $dataType = ReCaptchaRenderDataType::Image,
                            $dataSize = ReCaptchaRenderDataSize::Normal,
@@ -40,6 +50,13 @@ class ReCaptcha
             $options);
 
     }
+
+    /**
+     * @param string $render
+     * @param string $hl
+     * @param null $onload
+     * @return string
+     */
     public function script($render = ReCaptchaScriptRender::onload,
                            $hl = ReCaptchaScriptLanguage::None,
                            $onload = null)
@@ -61,8 +78,12 @@ class ReCaptcha
 
     }
 
+    /**
+     * @param $response
+     * @return ReCaptchaResponse
+     */
     public function valid($response)
     {
-        return true;
+        return new ReCaptchaResponse($response);
     }
 }

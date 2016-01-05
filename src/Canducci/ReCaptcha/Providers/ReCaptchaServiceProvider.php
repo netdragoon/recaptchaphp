@@ -3,7 +3,7 @@
 namespace Canducci\ReCaptcha\Providers;
 
 use Canducci\ReCaptcha\ReCaptcha;
-use Canducci\ReCaptcha\ReCaptchaValid;
+use Canducci\ReCaptcha\ReCaptchaValidation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -11,6 +11,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
 {
 
     protected $defer = false;
+
     /**
      * Boot
      *
@@ -37,6 +38,12 @@ class ReCaptchaServiceProvider extends ServiceProvider
         $this->blade();
     }
 
+    /**
+     * Load Class Instance
+     *
+     * @return void
+     *
+     */
     private function load()
     {
         $this->app->singleton('recaptcha', function()
@@ -47,14 +54,27 @@ class ReCaptchaServiceProvider extends ServiceProvider
         $this->app->bind('Canducci\ReCaptcha\ReCaptcha', 'recaptcha');
     }
 
+    /**
+     * Render Validation
+     *
+     * @return void
+     *
+     */
     private function validation()
     {
         $validator = $this->app->make('validator');
-        $validator->extend('recaptcharesponse', ReCaptchaValid::class, 'Error');
+        $validator->extend('recaptchavalidation', ReCaptchaValidation::class, 'Error');
     }
 
+    /**
+     * Render Blade
+     *
+     * @return void
+     *
+     */
     private function blade()
     {
+
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
 
             if (str_contains($this->app->version(), '5.0'))
@@ -93,5 +113,6 @@ class ReCaptchaServiceProvider extends ServiceProvider
 
             }
         });
+
     }
 }
