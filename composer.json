@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Canducci Recaptcha",
     "keywords": ["recaptcha", "canducci", "google"],
-    "homepage": "https://github.com/netdragoon/avatar",
+    "homepage": "https://github.com/netdragoon/recaptchaphp",
     "license": "MIT",
     "authors": [
         {
