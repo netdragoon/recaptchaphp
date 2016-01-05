@@ -50,3 +50,56 @@ Run the Artisan comand
 
 
 In the `config/recaptcha.php` add `site_key` e `secret_key` of _Google ReCaptcha_ (https://www.google.com/recaptcha/intro/index.html).
+
+###Usage
+
+__Blade in View__
+
+The `@recaptchascript()` blade in the tag `<head></head>`, example:
+
+```HTML
+<!DOCTYPE html>
+<html>
+    <head>
+    <tile>ReCaptcha Test</tile>
+    @recaptchascript()
+    </head>
+```    
+
+The `@recaptcha()` blade in the tag `<form></form>`, example:
+
+<form action="/v" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    @recaptcha()
+    <button type="submit">Send</button>
+</form>
+
+__Variable in View__
+
+_Controller_
+```
+public function index1()
+{
+    return view('index1')
+        ->with('script', recaptcha_script())
+        ->with('captcha', recaptcha_render());
+}
+
+```
+
+_Html_
+```HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <tile>ReCaptcha Test</tile>
+    {!! $script !!}
+```
+and
+```HTML   
+<form action="/v" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    {!! $captcha !!}
+    <button type="submit">Send</button>
+</form>
+```    
