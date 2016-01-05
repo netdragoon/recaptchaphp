@@ -1,6 +1,6 @@
-# CANDUCCI RECAPTCHA
+### CANDUCCI RECAPTCHA
 
-[![Canducci Cep](http://i666.photobucket.com/albums/vv25/netdragoon/cep_zpsoqtae5hr.png)](https://packagist.org/packages/canducci/recaptcha)
+[![CANDUCCI RECAPTCHA](http://i1194.photobucket.com/albums/aa377/netdragoon1/captcha_zpsxfi4kpgn.png)](https://packagist.org/packages/canducci/recaptcha)
 
 [![Build Status](https://travis-ci.org/netdragoon/recaptchaphp.svg?branch=master)](https://travis-ci.org/netdragoon/recaptchaphp)
 [![Packagist](https://img.shields.io/packagist/dt/canducci/recaptcha.svg?style=flat)](https://packagist.org/packages/canducci/recaptcha)
