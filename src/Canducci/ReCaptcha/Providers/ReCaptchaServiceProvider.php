@@ -2,18 +2,12 @@
 
 namespace Canducci\ReCaptcha\Providers;
 
+use Canducci\ReCaptcha\ReCaptcha;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class ReCaptchaServiceProvider extends ServiceProvider
 {
-
-    /**
-     * ReCaptchaServiceProvider constructor.
-     */
-    public function __construct()
-    {
-
-    }
 
     /**
      * Boot
@@ -26,11 +20,6 @@ class ReCaptchaServiceProvider extends ServiceProvider
             __DIR__ . '/../../Config/recaptcha.php' => config_path('recaptcha.php'),
             __DIR__.'/../../Request/ReCaptchaRequest.php' => app_path('/Http/Requests/ReCaptchaRequest.php')
         ]);
-        /*
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/recaptcha.php', 'recaptcha'
-        );*/
-        $this->mergeConfigFrom(config_path('recaptcha.php'), 'recaptcha');
     }
 
     /**
@@ -40,6 +29,59 @@ class ReCaptchaServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->load();
+        $this->blade();
+    }
 
+    private function load()
+    {
+        $this->app->singleton('recaptcha', function()
+        {
+            return new ReCaptcha();
+        });
+
+        $this->app->bind('Canducci\ReCaptcha\ReCaptcha', 'recaptcha');
+    }
+
+    private function blade()
+    {
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
+
+            if (str_contains($this->app->version(), '5.0'))
+            {
+
+                $blade->extend(function ($view, $compiler) {
+
+                    $pattern = $compiler->createMatcher('recaptchascript');
+
+                    return preg_replace($pattern, "$1<?php echo app('recaptcha')->script$2; ?>", $view);
+
+                });
+
+                $blade->extend(function ($view, $compiler) {
+
+                    $pattern = $compiler->createMatcher('recaptcha');
+
+                    return preg_replace($pattern, "$1<?php echo app('recaptcha')->render$2; ?>", $view);
+
+                });
+
+            }
+            else
+            {
+                $blade->directive('recaptchascript', function ($expression) {
+
+                    return "<?php echo app('recaptcha')->script{$expression}; ?>";
+
+                });
+
+                $blade->directive('recaptcha', function ($expression) {
+
+                    return "<?php echo app('recaptcha')->render{$expression}; ?>";
+
+                });
+
+            }
+        });
     }
 }
