@@ -67,13 +67,13 @@ The `@recaptchascript()` blade in the tag `<head></head>`, example:
 ```    
 
 The `@recaptcha()` blade in the tag `<form></form>`, example:
-
+```HTML
 <form action="/v" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     @recaptcha()
     <button type="submit">Send</button>
 </form>
-
+```
 ___
 
 __Variable in View__
