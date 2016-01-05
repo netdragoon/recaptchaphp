@@ -63,7 +63,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
     private function validation()
     {
         $validator = $this->app->make('validator');
-        $validator->extend('recaptchavalidation', ReCaptchaValidation::class, 'Error');
+        $validator->extend('recaptchavalidation', 'Canducci\ReCaptcha\ReCaptchaValidation@validate', 'Error');
     }
 
     /**

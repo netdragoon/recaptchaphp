@@ -1,5 +1,11 @@
 <?php
 
+use Canducci\ReCaptcha\ReCaptchaRenderDataSize;
+use Canducci\ReCaptcha\ReCaptchaRenderDataType;
+use Canducci\ReCaptcha\ReCaptchaRenderTheme;
+use Canducci\ReCaptcha\ReCaptchaScriptLanguage;
+use Canducci\ReCaptcha\ReCaptchaScriptRender;
+
 if (!function_exists('recaptcha'))
 {
 
@@ -10,10 +16,10 @@ if (!function_exists('recaptcha'))
 
 }
 
-if (!function_exists('recaptcharender'))
+if (!function_exists('recaptcha_render'))
 {
 
-    function recaptcharender($dataTheme = ReCaptchaRenderTheme::Ligth,
+    function recaptcha_render($dataTheme = ReCaptchaRenderTheme::Ligth,
                              $dataType = ReCaptchaRenderDataType::Image,
                              $dataSize = ReCaptchaRenderDataSize::Normal,
                              $tabIndex = 0,
@@ -33,27 +39,24 @@ if (!function_exists('recaptcharender'))
 
 }
 
-if (!function_exists('recaptchascript'))
+if (!function_exists('recaptcha_script'))
 {
 
-    function recaptchascript($render = ReCaptchaScriptRender::onload,
+    function recaptcha_script($render = ReCaptchaScriptRender::onload,
                              $hl = ReCaptchaScriptLanguage::None,
                              $onload = null)
     {
 
-        return recaptcha()
-            ->script($render,
-                $hl,
-                $onload);
+        return recaptcha()->script($render, $hl,$onload);
 
     }
 
 }
 
-if (!function_exists('recaptchavalid'))
+if (!function_exists('recaptcha_valid'))
 {
 
-    function recaptchavalid($response)
+    function recaptcha_valid($response)
     {
 
         return recaptcha()->valid($response);

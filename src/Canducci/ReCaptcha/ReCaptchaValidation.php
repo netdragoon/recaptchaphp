@@ -27,8 +27,7 @@ class ReCaptchaValidation
      */
     public function validate($attribute, $value, $parameters, $validator)
     {
-
-        return $this->recaptcha->valid($value)->success();
-
+        $valid = $this->recaptcha->valid($value);
+        return $valid->success();
     }
 }
