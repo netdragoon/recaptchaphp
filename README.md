@@ -74,10 +74,12 @@ The `@recaptcha()` blade in the tag `<form></form>`, example:
     <button type="submit">Send</button>
 </form>
 
+___
+
 __Variable in View__
 
 _Controller_
-```
+```HTML
 public function index1()
 {
     return view('index1')
@@ -103,3 +105,5 @@ and
     <button type="submit">Send</button>
 </form>
 ```    
+
+___
