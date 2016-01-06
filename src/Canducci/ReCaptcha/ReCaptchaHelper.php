@@ -42,7 +42,7 @@ if (!function_exists('recaptcha_render'))
 if (!function_exists('recaptcha_script'))
 {
 
-    function recaptcha_script($render = ReCaptchaScriptRender::onload,
+    function recaptcha_script($render = ReCaptchaScriptRender::Onload,
                              $hl = ReCaptchaScriptLanguage::None,
                              $onload = null)
     {

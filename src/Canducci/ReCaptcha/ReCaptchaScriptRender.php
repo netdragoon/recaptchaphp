@@ -4,6 +4,6 @@ namespace Canducci\ReCaptcha;
 
 abstract class ReCaptchaScriptRender
 {
-    const explicit = 'explicit';
-    const onload = 'onload';
+    const Explicit = 'explicit';
+    const Onload = 'onload';
 }

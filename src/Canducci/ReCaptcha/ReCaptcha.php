@@ -28,12 +28,14 @@ class ReCaptcha
 
         if (!is_null($dataCallback))
         {
-            $options .= sprintf('data-callback="%s"', $dataCallback);
+            $options .= sprintf('data-callback="%s"',
+                $dataCallback);
         }
 
         if (!is_null($dataExpiredCallback))
         {
-            $options .= sprintf('data-expired-callback="%s"', $dataExpiredCallback);
+            $options .= sprintf('data-expired-callback="%s"',
+                $dataExpiredCallback);
         }
 
         if ($options != '')
@@ -57,24 +59,31 @@ class ReCaptcha
      * @param null $onload
      * @return string
      */
-    public function script($render = ReCaptchaScriptRender::onload,
+    public function script($render = ReCaptchaScriptRender::Onload,
                            $hl = ReCaptchaScriptLanguage::None,
                            $onload = null)
     {
 
-        $options = sprintf('?render=%s', in_array((string)$render, array('explicit','onload')) ? $render: 'onload');
+        $options = sprintf('?render=%s',
+            in_array((string)$render,
+                array('explicit','onload')) ?
+                $render:
+                'onload');
 
         if ($hl != '')
         {
-            $options .= sprintf('&hl=%s', $hl);
+            $options .= sprintf('&hl=%s',
+                $hl);
         }
 
         if (!is_null($onload))
         {
-            $options .= sprintf('&onload=%s', $onload);
+            $options .= sprintf('&onload=%s',
+                $onload);
         }
 
-        return sprintf('<script src="https://www.google.com/recaptcha/api.js%s" async defer></script>', $options);
+        return sprintf('<script src="https://www.google.com/recaptcha/api.js%s" async defer></script>',
+            $options);
 
     }
 

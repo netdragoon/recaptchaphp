@@ -3,7 +3,6 @@
 namespace Canducci\ReCaptcha\Providers;
 
 use Canducci\ReCaptcha\ReCaptcha;
-use Canducci\ReCaptcha\ReCaptchaValidation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 

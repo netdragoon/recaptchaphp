@@ -108,7 +108,7 @@ and
 
 ___
 
-###Verify `g-recaptcha-response` is valid?
+__Verify__ `g-recaptcha-response` __is valid?__
 
 __Use namespace:__
 
@@ -143,3 +143,56 @@ public function v(Request $request, ReCaptcha $re)
 }
 
 ```
+
+___
+
+###The settings of the tags can be like this:
+
+1) Function:
+```PHP
+$script = recaptcha_script(Canducci\ReCaptcha\ReCaptchaScriptRender::Onload, 
+                           Canducci\ReCaptcha\ReCaptchaScriptLanguage::Armenian, 
+                           'function_CallBack');
+                           
+$render = recaptcha_render(Canducci\ReCaptcha\ReCaptchaRenderTheme::Ligth, 
+                           Canducci\ReCaptcha\ReCaptchaRenderDataType::Image, 
+                           Canducci\ReCaptcha\ReCaptchaRenderDataSize::Normal, 
+                           0, 
+                           'function_CallBack', 
+                           'function_dataExpiredCallBack');
+```
+
+2) Facade:
+
+```PHP
+use `Canducci\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade`
+```    
+
+```PHP    
+$script = ReCaptchaFacade::script(Canducci\ReCaptcha\ReCaptchaScriptRender::Onload, 
+                                  Canducci\ReCaptcha\ReCaptchaScriptLanguage::Armenian, 
+                                  'function_CallBack');
+                                  
+$render = ReCaptchaFacade::render(Canducci\ReCaptcha\ReCaptchaRenderTheme::Ligth, 
+                                  Canducci\ReCaptcha\ReCaptchaRenderDataType::Image, 
+                                  Canducci\ReCaptcha\ReCaptchaRenderDataSize::Normal, 
+                                  0, 
+                                  'function_CallBack', 
+                                  'function_dataExpiredCallBack');
+```
+
+3) Blade:
+```PHP
+@recaptchascript(Canducci\ReCaptcha\ReCaptchaScriptRender::Onload, 
+                 Canducci\ReCaptcha\ReCaptchaScriptLanguage::Armenian,
+                 'function_CallBack')
+
+@recaptcha(Canducci\ReCaptcha\ReCaptchaRenderTheme::Ligth, 
+           Canducci\ReCaptcha\ReCaptchaRenderDataType::Image, 
+           Canducci\ReCaptcha\ReCaptchaRenderDataSize::Normal, 
+           0, 
+           'function_CallBack', 
+           'function_dataExpiredCallBack')
+```
+
+__Obs:__ _These settings are not compulsory, but if necessary, following Google's website tutorial can be made._
