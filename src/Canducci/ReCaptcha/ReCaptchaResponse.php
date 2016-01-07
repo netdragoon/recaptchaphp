@@ -5,8 +5,8 @@ namespace Canducci\ReCaptcha;
 class ReCaptchaResponse
 {
     private $response = null;
-    private $sucess = false;
-    private $erros = array('g-recaptcha-response-invalid-or-empty');
+    private $success = false;
+    private $errors = array('g-recaptcha-response-invalid-or-empty');
 
     /**
      * ReCaptchaResponse constructor.
@@ -18,8 +18,8 @@ class ReCaptchaResponse
         {
             $this->response = $response;
             $data = $this->verify();
-            $this->sucess = (bool)$data['success'];
-            $this->erros = isset($data['error-codes']) ?
+            $this->success = (bool)$data['success'];
+            $this->errors = isset($data['error-codes']) ?
                 $data['error-codes'] :
                 array();
         }
@@ -30,15 +30,15 @@ class ReCaptchaResponse
      */
     public function success()
     {
-        return $this->sucess;
+        return $this->success;
     }
 
     /**
      * @return array
      */
-    public function erros()
+    public function errors()
     {
-        return $this->erros;
+        return $this->errors;
     }
 
     /**

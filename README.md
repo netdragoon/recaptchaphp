@@ -139,7 +139,7 @@ public function v(Request $request, ReCaptcha $re)
     else
     {
         //not valid
-        var_dump( $valid->erros() );
+        var_dump( $valid->errors() );
     }
 }
 
