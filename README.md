@@ -132,13 +132,14 @@ public function v(Request $request, ReCaptcha $re)
  
     $valid = $re->valid($request->get('g-recaptcha-response'));
     
-    if ($valid)
+    if ( $valid->success() )
     {
         //success
     }
     else
     {
         //not valid
+        var_dump( $valid->erros() );
     }
 }
 
